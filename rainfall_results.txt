@@ -1,0 +1,4 @@
+Total rainfall for the year: 793.00
+Average monthly rainfall: 66.08
+Month with highest rainfall: 9 (354.00 inches)
+Month with lowest rainfall: 4 (4.00 inches)
