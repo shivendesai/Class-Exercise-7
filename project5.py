@@ -1,33 +1,37 @@
 #Written by Shiven Desai
-# Import tkinter
-from tkinter import *
+# Define the food_items function to display the selected food items
+def food_items():
+    # Clear any previous selections
+    food_selected.delete(0, END)
+    
+    # Get the selected food items from the listbox
+    selected_items = [food_list.get(i) for i in food_list.curselection()]
+    
+    # Display the selected food items in the text widget
+    for item in selected_items:
+        food_selected.insert(END, item)
 
-# Create the root window
+        # Print the selected food items to the console
+        print(item)
+        
+# Create the main window
 root = Tk()
-root.geometry('180x200')
+root.title("Food Selector")
 
-# Create a listbox
-listbox = Listbox(root, width=40, height=10, selectmode=MULTIPLE)
+# Create a listbox containing food items
+food_list = Listbox(root, selectmode=MULTIPLE)
+food_list.insert(1, "Pizza")
+food_list.insert(2, "Burger")
+food_list.insert(3, "Taco")
+food_list.insert(4, "Salad")
+food_list.pack()
 
-# Insert items into the listbox
-listbox.insert(1, "Data Structure")
-listbox.insert(2, "Algorithm")
-listbox.insert(3, "Data Science")
-listbox.insert(4, "Machine Learning")
-listbox.insert(5, "Blockchain")
+# Create a button to select food items
+select_button = Button(root, text="Select", command=food_items)
+select_button.pack()
 
-# Define a function to print the selected listbox item(s)
-def selected_item():
-    # Traverse the tuple returned by the curselection method and print the corresponding value(s)
-    for i in listbox.curselection():
-        print(listbox.get(i))
+# Create a text widget to display the selected food items
+food_selected = Text(root)
+food_selected.pack()
 
-# Create a button widget and map the command parameter to selected_item function
-btn = Button(root, text='Print Selected', command=selected_item)
-
-# Place the button and listbox
-btn.pack(side='bottom')
-listbox.pack()
-
-# Start the main event loop
 root.mainloop()
